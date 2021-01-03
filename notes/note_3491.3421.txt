@@ -1,0 +1,13 @@
+TM3491「マイページを作成しよう」- whereメソッドとID付きリンク
+TM3421「アソシエーションを理解しよう」- モデル間の関係
+
+1. ルーティング追加
+    - get   'users/:id' => 'users#show'
+2. $ rails generate controller users
+3. コントローラの編集 (showアクションの定義)
+    - app/controllers/users_controller.rb
+4. ビューファイルの作成・編集
+    - app/views/users/show.html.erb及びapp/views/layouts/application.html.erb
+5. プレビューしてマイページを確認する
+6. アソシエーションの定義
+    - app/models/user.rb及びapp/models/tweet.rb

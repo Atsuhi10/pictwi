@@ -1,0 +1,10 @@
+TM3494「ツイートにユーザー情報を追加しよう」- カラムとストロングパラメータの追加
+
+1. $ rails generate migration AddUserIdToTweets user_id:integer
+2. $ rails db:migrate
+    - これでtweetsテーブルにinteger型の新しいカラムuser_idが追加される。
+3. コントローラの編集
+    - app/controllers/application_controller.rb
+    - 内部処理を変更するだけなので今回ビューはそのまま
+4. プレビューしてテスト投稿
+5. テーブルを確認する

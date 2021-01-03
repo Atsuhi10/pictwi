@@ -1,0 +1,28 @@
+TM3428「ツイートにコメントできるようにしよう」- データテーブル、アソシエーションの追加とredirect_toメソッドの利用
+
+1. $ rails generate model comment
+2. $ rails db:migrate
+    - これで新しくcommentテーブルが作成される。
+    - consoleで作成済みのテーブルを一覧可能
+    - > ActiveRecord::Base.connection.tables
+3. アソシエーションの記述
+    - app/models/comment.rb、同user.rb、同tweet.rb
+4. ルーティングの記述
+    - config/routes.rb
+    - 今回からresourcesメソッドを利用する
+    - ルーティングのネストも使う
+5. $ rails generate controller comments
+6. コントローラの編集
+    - app/controllers/comments_controller.rb
+    - createアクションを定義する
+    - 同名のビューは用意しないでredirect_toメソッドで投稿の詳細画面へ遷移させる
+    - app/controllers/tweets_controller.rb
+    - showアクションでコメントもインスタンス変数としてビューへ渡すようにする
+    - app/controllers/users_controller.rb
+    - showアクションでcurrent_userではなく任意のユーザーの投稿が表示されるようにインスタンス変数の値を変更する
+7. ビューファイルの編集
+    - app/views/tweets/show.html.erb
+    - コメントフォームとコメント一覧のdivを入れる
+8. cssファイルを編集するビューファイルの編集
+    - ここは別途用意されたものを流用
+9. プレビューして表示・動作を確認する

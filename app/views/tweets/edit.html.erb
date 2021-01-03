@@ -1,0 +1,12 @@
+<div class="contents row">
+  <div class='container'>
+    <%= form_tag("/tweets/#{@tweet.id}", method: :patch) do %>
+      <h3>編集する</h3>
+      <input type="text" name="user_name" placeholder="Nickname" value="<%= @tweet.user_name%>" >
+      <input type="text" name="image_url" placeholder="URL of image" value="<%= @tweet.image_url%>" >
+      <textarea name="tweet_text" placeholder="Text" rows="10" cols="30" autofocus="true"><%= @tweet.tweet_text %></textarea>
+      <!--type属性textならvalue属性の値が、type属性textareaならタグの間の中身が初期値になる。-->
+      <input type="submit" value="Send">
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+[Console入力用下書き] 
+t = Tweet.new(user_name: "Blue", tweet_text: "If you come back in my life, I'll be there until the end of time", image_url: "https://images-na.ssl-images-amazon.com/images/I/51v4vz7OHvL._AC_SY355_.jpg")
+s = Tweet.new(user_name: "Nightwish", tweet_text: "Caress the one, the never-fading rain in your heart", image_url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.co.jp%2FAmaranth-1-Nightwish%2Fdp%2FB000S6EYOE&psig=AOvVaw1DXM1M0jEX1S2omKlQCJiE&ust=1608248470554000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiy-sjW0-0CFQAAAAAdAAAAABAE")
+r = Tweet.new(user_name: "Evanescene", tweet_text: "Wake me up inside, call my name and save me from the dark", image_url: "https://images.genius.com/8e261f0acd156be284a416afdc29d4c1.1000x1000x1.jpg")
+
+
+<%= link_to t.user.nickname, "/users/"<%= t.user_id %> %>
+<%= t.user.nickname %>
+<% user_path = "/users/" + t.user_id.to_s %>

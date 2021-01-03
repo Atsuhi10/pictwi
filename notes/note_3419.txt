@@ -1,0 +1,17 @@
+TM3419「ログイン機能を追加しよう1」- 新しいGemの利用
+
+1. Gemfile追記「gem ‘devise’」
+2. $ bundle install
+3. $ rails server (すぐに終了)
+4. $ rails generate devise:install
+    - configディレクトリ内に設定ファイルを作る。
+5. $ rails generate devise user
+    - Userモデルの作成：app/modeluser.rb（:trackableがあれば削除）やuserモデルのミグレーションファイルなどが作られ、
+    - config/routes.rbにdevise用のルーティングの記述が自動的に追加される。
+6. $ rails db:migrate
+7. テーブルの確認
+    - コンソールを立ち上げて > ActiveRecord::Base.connection.tablesを実行して登録済みのテーブル名を見る。
+8. ビューファイルとコントローラの編集(*)
+    - app/views/layouts/application.html.erb及びapp/controllers/tweets_controller.rb内のコメント参照
+9. プレビューして確認
+    - テストユーザー：rhymeratz506@gmail.com / qwerty

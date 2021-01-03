@@ -1,0 +1,18 @@
+<div class="contents row">
+  <h3><%= @nickname %>さんの投稿一覧</h3>
+  <% @tweets.each do |t| %>
+    <div class="content_post" style="background-image: url(<%= t.image_url %>);">
+      <%= simple_format(t.tweet_text) %>
+      <br />
+      <span class="name">
+        <% if t.user_name.nil? or t.user_name.length == 0 %>
+          <%= t.user.nickname %>
+        <% else %>
+          <%= t.user.nickname+" as "+t.user_name %>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+  <%= paginate(@tweets) %>
+  <!--ページネーションのリンクを表示させるkaminariのメソッド-->
+</div>

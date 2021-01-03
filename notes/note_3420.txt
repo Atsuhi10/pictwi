@@ -1,0 +1,15 @@
+TM3420「ログイン機能を追加しよう2」- ビューの編集とテーブルへのカラム追加
+
+1. $ rails generate devise:views
+    - これを実行する前から最低限のビューファイルはGemのインストール時に用意される
+    - それを変更するにはdeviseのコマンドを利用する
+2. ビューファイルの編集
+    - app/views/devise/registrations/new.html.erb及びapp/views/devise/sessions/new.html.erb
+    - と言ってもデフォルトのコード全体を<div class="contents row"></div>で囲うのみ
+3. プレビューして確認
+4. $ rails generate migration AddNicknameToUsers nickname:string
+5. $ rails db:migrate
+6. ビューファイルとコントローラの編集
+    - app/views/devise/registrations/new.html.erb及びapp/controllers/application_controller.rb
+7. プレビューして確認
+    - テストユーザー：atzfj10@gmail.com / testuser2

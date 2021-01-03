@@ -1,0 +1,54 @@
+<div class="contents row">
+  <h3>投稿の詳細</h3>
+  <% t=@tweet %>
+  <div class="content_post" style="background-image: url(<%= t.image_url %>);">
+    <% if user_signed_in? && current_user.id == t.user_id %>
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+          <li>
+            <%= link_to '削除', "/tweets/#{t.id}", method: :delete %>
+            <!--削除ボタン-->
+         </li>
+         <li>
+            <%= link_to '編集', "/tweets/#{t.id}/edit", method: :get %>
+            <!--編集ボタン-->
+          </li>
+        </ul>
+      </div>
+    <% end %>
+    <%= simple_format(t.tweet_text) %>
+  </div>
+  
+  <!--投稿者と日時の情報-->
+  <span class="name"><%= @signature %></span>
+  <p><%= simple_format("Posted on " + t.created_at.strftime("%F")) %></p>
+  
+  <div class="container">
+  <!--コメントフォーム-->
+    <% if current_user %>
+      <%= form_tag("/tweets/#{t.id}/comments", method: :post) do %>
+      <!--この中のt.idがcomments_controller.rb内のparamsのキー:tweet_idの値になる-->
+        <textarea name="text" placeholder="コメントする" rows="2" cols"30"></textarea>
+        <input type="submit" value="SEND">
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="comments">
+  <!--投稿済みコメント-->
+    <h4><コメント一覧></h4>
+    <% if @comments %>
+    <!-- nilであればendまでの行は読み込まれない-->
+      <% @comments.each do |c| %>
+        <p>
+          <strong><%= link_to c.user.nickname, "/users/#{c.user_id}" %>:</strong>
+          <%= c.text %>
+        </p>
+        <% if user_signed_in? && current_user.id == c.user_id %>
+          <p><%= link_to 'コメント削除', "/tweets/#{t.id}/comments/#{c.id}", method: :delete %></p>
+        <% end %>
+      <% end%>
+    <% end %>
+  </div>
+</div>

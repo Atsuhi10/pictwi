@@ -1,0 +1,21 @@
+<div class="content_post" style="background-image: url(<%= t.image_url %>);">
+  <div class="more">
+    <li>
+      <%= link_to '詳細', "/tweets/#{t.id}", method: :get %>
+      <!--詳細表示へのリンク-->
+    </li>
+  </div>
+  
+  <%= simple_format(t.tweet_text) %>
+  <!--改行を反映するヘルパーメソッド-->
+  <br />
+  <span class="name">
+    <% if not t.user_id.nil? %>
+      <%= link_to t.user.nickname, "/users/" + t.user_id.to_s %>
+      <!-- アソシエーション定義をしているためt.userによりそのインスタンスに関連づけられたUserモデルのインスタンスが取得される。-->
+    <% else %>
+      <%= t.user_name + "（サンプル）" %>
+      <!-- サインアップ実装前に作成したインスタンスの表示のため-->
+    <% end %>
+  </span>
+</div>

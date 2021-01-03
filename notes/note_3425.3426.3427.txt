@@ -1,0 +1,21 @@
+TM3425「ツイートの削除機能をつけよう」- destroyメソッドとルーティング・ボタンの追加
+TM3426「ツイートの編集機能をつけよう」- patchメソッドの利用
+TM3427「ツイートの詳細画面を追加しよう」
+
+1. ルーティングの設定
+    - 新たにHTTPメソッドdelete、patchを使い始める
+2. コントローラの編集
+    - app/controllers/tweets_controller.rb
+    - destroyアクションではActiveRecordメソッドのdestroyを使用する。投稿者自身だけが行えるように条件設定する。
+    - editアクションでは編集対象のインスタンスを取得してビューへ渡す。
+    - updateアクションでは上書き内容を取得してApplicationControllerのメソッドupdateの引数として使うことでレコードを書き換える。投稿者自身だけが行えるように条件設定する。
+    - showアクションでは詳細表示させたいインスタンスを取得してビューへ渡す。
+3. ビューファイルの編集
+    - app/views/tweets/index.html.erb
+    - 詳細表示・編集・削除のためのボタンを配置してlink_toメソッドを使用する。
+    - 編集と削除のボタンはログインしているユーザーの投稿だけに表示させる。
+4. ビューファイルの新規作成
+    - アクション名に合わせてapp/views/tweetsディレクトリに
+    - destroy.html.erb、edit.html.erb、show.html.erb、update.html.erb
+    - を作成する。
+5. プレビューして表示・機能を確認

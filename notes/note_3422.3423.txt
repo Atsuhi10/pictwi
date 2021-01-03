@@ -1,0 +1,21 @@
+TM3422「ツイートの表示を改善しよう」- orderメソッドとページネーション
+TM3423「ツイートの表示を改善しよう２」- アソシエーションの利用とincludesメソッド
+
+1. Gemfileにkaminari追記
+    - gem 'kaminari'
+2. $ bundle install
+3. コントローラの編集
+    - app/controllers/tweets_controller.rb及びapp/controllers/users_controller.rb
+    - orderメソッドで作成日時順に並び替える
+    - includesメソッドでUserレコードもTweetと同時に取得させる
+    - pageメソッド、perメソッドで1ページに表示するインスタンスを限定する
+    - tweets_paramsから:nameを削除する（※）
+4. ビューファイルの編集
+    - app/controllers/tweets_controller.rb及びapp/controllers/users_controller.rb
+    - app/views/users/show.html.erb及びapp/views/tweets/index.html.erb
+    - paginateメソッドの利用
+    - アソシエーションを利用してニックネームを表示する方式に変更
+5. $ rails g migration RemoveNameFromTweets name:string（※）
+6. $ rails db:migrate（※）
+
+※: 3周目ではこれらを実施しないで他の実装をしている。

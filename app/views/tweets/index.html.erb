@@ -1,0 +1,13 @@
+<div class="contents row">
+    <% @posts.each do |tweet| %>
+      <%= render partial: "tweet", locals: {t: tweet} %>
+      <!--
+      renderメソッドは部分テンプレートを呼び出す
+      同じ内容を他のビューファイルでも読み込むことができる
+      この場合は同じディレクトリ内の_tweet.html.erbが呼び出され、
+      その中では変数tweetが代入された変数tを使うことができる
+      -->
+    <% end %>
+    <%= paginate(@posts) %>
+    <!--ページネーションのリンクを表示させるkaminariのメソッド-->
+</div>

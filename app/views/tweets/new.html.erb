@@ -1,0 +1,23 @@
+<div class="contents row">
+  <div class='container'>
+    <%= form_tag('/tweets', method: :post) do %>
+    <!--フォームを表示するヘルパーメソッド-->
+    <!--引数はこのフォームのSENDボタンを押した際のリクエストの設定（パスとhttpメソッド） -->
+      <h3>投稿する</h3>
+      <!--name属性の値はデータベースのカラム名に一致させる（migrationファイル参照）-->
+      <input type="text" name="user_name" placeholder="Nickname">
+      <input type="text" name="image_url" placeholder="URL of image">
+      <textarea name="tweet_text" placeholder="Text" rows="10" cols="30"></textarea>
+      <input type="submit" value="Send">
+    <% end %>
+    <!--
+    通常のHTMLで記述する場合はこうなる。
+    <form action='/tweets' method='post'>
+      <input type="text" name="user_name" placeholder="Nickname">
+      <input type="text" name="image_url" placeholder="URL of image">
+      <tetarea name="text" placeholder="Text" rows="10" cols="30"></tetarea>
+      <input type="submit" value="Send">
+    </form>
+    -->
+  </div>
+</div>
